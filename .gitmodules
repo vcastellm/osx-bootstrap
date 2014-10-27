@@ -1,3 +1,0 @@
-[submodule "roles/homebrew"]
-	path = roles/homebrew
-	url = https://github.com/osxc/homebrew.git

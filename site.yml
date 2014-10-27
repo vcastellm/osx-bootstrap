@@ -1,69 +1,61 @@
 ---
 - hosts: all
-  roles:
 
-  # osx config
-  - role: dock
-    folders:
-    - path: ~/
-    - path: ~/Documents
-    - path: ~/Downloads
-      sort: datemodified
+  tasks:
+    - homebrew: name='{{ item }}' state=present
+      with_items:
+        - bash-completion
+        - git
+        - tmux
+        - pass
+        - htop
+        - reattach-to-user-namespace
+        - bzr
+        - hg
+        - imagemagick
+        - ctags
+        - vim
+        - node
+        - android-sdk
+        - mongodb
+        - mysql
+        - redis
 
-  - homebrew: name'{{ item }}' state=present
-    with_items:
-      - bash-completion
-      - git
-      - tmux
-      - pass
-      - htop
-      - reattach-to-user-namespace
-      - bzr
-      - hg
-      - imagemagick
-      - ctags
-      - vim
-      - node
-      - android-sdk
-      - mongodb
-      - mysql
-      - redis
-
-  - role: npm_package
-    package_name: grunt
-  - role: npm_package
-    package_name: bower
-
-  - role: rbenv
-
-  - homebrew_cask: name='{{ item }}' state=present
-    with_items:
-      - asepsis
-      - font-source-code-pro
-      - font-source-code-powerline
-      - alfred
-      - spotify
-      - google-chrome
-      - iterm2
-      - firefox
-      - java
-      - dash
-      - atom
-      - postgres
-      - virtualbox
-      - vagrant
-      - slack
-      - harvest
-      - vmware-fusion
-      - tinygrab
-      - google-hangouts
-      - horndis
-      - istats-menus
-      - valentina-studio
-      - pgadmin3
-      - transmission
-      - transmit
-      - android-file-transfer
-      - disk-inventory-x
-      - vagrant-manager
-      - skype
+    # - role: npm_package
+    #   package_name: grunt
+    #
+    # - role: npm_package
+    #   package_name: bower
+    #
+    # - role: rbenv
+    #
+    - homebrew_cask: name='{{ item }}' state=present
+      with_items:
+        - font-source-code-pro
+        - font-source-code-powerline
+        - alfred
+        - spotify
+        - google-chrome
+        - iterm2
+        - firefox
+        - java
+        - dash
+        - atom
+        - postgres
+        - virtualbox
+        - vagrant
+        - slack
+        - harvest
+        - vmware-fusion
+        - tinygrab
+        - google-hangouts
+        - horndis
+        - istats-menus
+        - valentina-studio
+        - pgadmin3
+        - transmission
+        - transmit
+        - android-file-transfer
+        - disk-inventory-x
+        - vagrant-manager
+        - skype
