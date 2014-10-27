@@ -1,4 +1,3 @@
-xc-custom
-=========
+# osx-bootstrap
 
-Your custom roles &amp; Configuration
+My custom roles &amp; Configuration
