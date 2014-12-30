@@ -2,7 +2,7 @@
 - hosts: all
 
   tasks:
-    - homebrew: name='{{ item }}' state=present
+    - homebrew: name='{{ item }}' update_homebrew=yes state=present
       with_items:
         - bash-completion
         - git
@@ -20,6 +20,9 @@
         - mongodb
         - mysql
         - redis
+        - direnv
+        - caskroom/cask/brew-cask
+      tags: brew
 
     # - role: npm_package
     #   package_name: grunt
@@ -32,7 +35,7 @@
     - homebrew_cask: name='{{ item }}' state=present
       with_items:
         - font-source-code-pro
-        - font-source-code-powerline
+        # - font-source-code-powerline # no more?
         - alfred
         - spotify
         - google-chrome
@@ -50,7 +53,7 @@
         - tinygrab
         - google-hangouts
         - horndis
-        - istats-menus
+        # - istats-menus # no more?
         - valentina-studio
         - pgadmin3
         - transmission
@@ -59,3 +62,4 @@
         - disk-inventory-x
         - vagrant-manager
         - skype
+      tags: cask
