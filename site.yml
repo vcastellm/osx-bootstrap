@@ -1,7 +1,7 @@
 ---
 - hosts: all
 
-  tasks:
+  pre_tasks:
     - homebrew: name='{{ item }}' update_homebrew=yes state=present
       with_items:
         - bash-completion
@@ -21,7 +21,8 @@
         - mysql
         - redis
         - direnv
-        - caskroom/cask/brew-cask
+        - rbenv
+        - ruby-build
       tags: brew
 
     # - role: npm_package
@@ -30,8 +31,7 @@
     # - role: npm_package
     #   package_name: bower
     #
-    # - role: rbenv
-    #
+
     - homebrew_cask: name='{{ item }}' state=present
       with_items:
         - font-source-code-pro
@@ -63,3 +63,10 @@
         - vagrant-manager
         - skype
       tags: cask
+
+  roles:
+
+    - role: rbenv
+      rbenv_rubies:
+        - 2.1.3
+      rbenv_global: 2.1.3

@@ -3,32 +3,40 @@
 - name: uninstall readline
   ignore_errors: True
   command: brew uninstall readline
+  tags: rbenv
 
 - name: install a ruby-build compatible readline version
   command: brew install https://raw.githubusercontent.com/Homebrew/homebrew/0181c8a1633353affefabe257c170edbd6d7c008/Library/Formula/readline.rb
+  tags: rbenv
 
 - name: pin readline version
   command: brew pin readline
+  tags: rbenv
 
 # shim rbenv
 
 - name: ensure bash_profile presence
   ignore_errors: True
   file: path=~/.bash_profile state=touch
+  tags: rbenv
 
 - name: ensure zshenv presence
   ignore_errors: True
   file: path=~/.zshenv state=touch
+  tags: rbenv
 
 - name: add shim to bash
   lineinfile: dest=~/.bash_profile regexp="rbenv" line="eval \"$(rbenv init -)\"" state=present
+  tags: rbenv
 
 - name: add shim to zsh
   lineinfile: dest=~/.zshenv regexp="rbenv" line="eval \"$(rbenv init -)\"" state=present
+  tags: rbenv
 
 # install base version
 - shell: rbenv versions
   register: installed_rbenv_versions
+  tags: rbenv
 
 # installed versions show as :
 # ^  version-name
@@ -36,9 +44,11 @@
 # ^* version-name
 - name: install and build rubies
   command: rbenv install -s {{ item }}
-  with_items: rubies
+  with_items: rbenv_rubies
   when: installed_rbenv_versions.stdout.find(" " + item) == -1
+  tags: rbenv
 
 # set the global
-- name: set {{ global }} as global ruby
-  command: rbenv global {{ global }}
+- name: set {{ rbenv_global }} as global ruby
+  command: rbenv global {{ rbenv_global }}
+  tags: rbenv
