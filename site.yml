@@ -23,6 +23,7 @@
         - direnv
         - rbenv
         - ruby-build
+        - ssh-copy-id
       tags: brew
 
     # - role: npm_package
