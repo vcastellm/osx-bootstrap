@@ -63,6 +63,7 @@
         - disk-inventory-x
         - vagrant-manager
         - skype
+        - the-unarchiver
       tags: cask
 
   roles:
