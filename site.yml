@@ -24,6 +24,7 @@
         - rbenv
         - ruby-build
         - ssh-copy-id
+        - wget
       tags: brew
 
     # - role: npm_package
@@ -40,35 +41,31 @@
         - alfred
         - spotify
         - google-chrome
-        - iterm2
         - firefox
         - java
-        - dash
-        - atom
         - postgres
         - virtualbox
-        - vagrant
         - slack
+        - wavebox
         - harvest
-        - vmware-fusion
-        - tinygrab
-        - google-hangouts
-        - horndis
-        # - istats-menus # no more?
-        - valentina-studio
-        - pgadmin3
         - transmission
-        - transmit
         - android-file-transfer
         - disk-inventory-x
-        - vagrant-manager
-        - skype
+        - docker
         - the-unarchiver
+        - calibre
+        - jdownloader
+        - cyberduck
+        - keybase
+        - gimp
+        - appcleaner
+        - hatari
+        - licecap
       tags: cask
 
   roles:
 
     - role: rbenv
       rbenv_rubies:
-        - 2.1.3
-      rbenv_global: 2.1.3
+        - 2.5.1
+      rbenv_global: 2.5.1
